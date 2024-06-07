@@ -19,7 +19,7 @@ const Add = ({ onAdd }) => {
 
   const onFinish = async (values) => {
     try {
-      const response = await axios.post('http://localhost:3001/authors', values);
+      const response = await axios.post('https://candid-capybara-620aae.netlify.app/.netlify/functions/api', values);
       onAdd(response.data);
       message.success('Author added successfully');
       form.resetFields();

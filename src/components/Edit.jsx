@@ -10,7 +10,7 @@ const Edit = ({ author, onUpdate, onCancel }) => {
 
   const onFinish = async (values) => {
     try {
-      const response = await axios.put(`https://app.netlify.com/sites/candid-capybara-620aae/logs/functions/api${author._id}`, values);
+      const response = await axios.put(`https://candid-capybara-620aae.netlify.app/.netlify/functions/api${author._id}`, values);
       onUpdate(author._id, response.data);
       message.success('Author updated successfully');
       onCancel();

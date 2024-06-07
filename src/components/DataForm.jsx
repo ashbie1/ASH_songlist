@@ -18,7 +18,7 @@ const DataForm = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://app.netlify.com/sites/candid-capybara-620aae/logs/functions/api');
+      const response = await axios.get('  ');
       setData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -27,7 +27,7 @@ const DataForm = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://app.netlify.com/sites/candid-capybara-620aae/logs/functions/api/${id}`);
+      await axios.delete(`https://candid-capybara-620aae.netlify.app/.netlify/functions/api/${id}`);
       setData(data.filter(item => item._id !== id));
       message.success('Author deleted successfully');
     } catch (error) {
