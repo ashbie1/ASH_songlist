@@ -1,20 +1,18 @@
-// src/components/Add.jsx
-
 import React, { useState } from 'react';
 import { Modal, Form, Input, Button, message } from 'antd';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
 const Add = ({ onAdd }) => {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
 
   const showModal = () => {
-    setVisible(true);
+    setOpen(true);
   };
 
   const handleCancel = () => {
-    setVisible(false);
+    setOpen(false);
   };
 
   const onFinish = async (values) => {
@@ -23,7 +21,7 @@ const Add = ({ onAdd }) => {
       onAdd(response.data);
       message.success('Author added successfully');
       form.resetFields();
-      setVisible(false);
+      setOpen(false);
     } catch (error) {
       message.error('Failed to add author');
     }
@@ -32,7 +30,7 @@ const Add = ({ onAdd }) => {
   return (
     <>
       <Button type="primary" onClick={showModal}>Add Author</Button>
-      <Modal title="Add Author" visible={visible} onCancel={handleCancel} footer={null}>
+      <Modal title="Add Author" open={open} onCancel={handleCancel} footer={null}>
         <Form form={form} onFinish={onFinish} layout="vertical">
           <Form.Item name="artist" label="Artist" rules={[{ required: true, message: 'Artist is required' }]}>
             <Input />
